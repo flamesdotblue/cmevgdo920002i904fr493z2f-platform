@@ -1,28 +1,35 @@
-import { useState } from 'react'
+import { useEffect } from 'react';
+import BackgroundSpline from './components/BackgroundSpline';
+import HeaderNav from './components/HeaderNav';
+import HeroContent from './components/HeroContent';
+import SocialLinks from './components/SocialLinks';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  useEffect(() => {
+    document.documentElement.classList.add('bg-black');
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="relative min-h-screen w-full overflow-hidden bg-black text-zinc-200 antialiased">
+      <BackgroundSpline />
 
-export default App
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,255,133,0.15),transparent_60%),radial-gradient(ellipse_at_bottom,rgba(0,180,255,0.12),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 mix-blend-overlay" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0) 0, rgba(0,0,0,0) calc(100% - 120px), rgba(0,0,0,0.7) 100%)' }} />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.09]" style={{ backgroundImage: 'url("data:image/svg+xml;utf8,\
+        <svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'>\
+          <path d=\'M0 31h32v1H0zM31 0v32h1V0z\' fill=\'#00ff88\' fill-opacity=\'0.3\'/>\
+        </svg>\
+      ")' }} />
+
+      <HeaderNav />
+
+      <main className="relative z-10 flex min-h-screen items-center justify-center px-6">
+        <HeroContent />
+      </main>
+
+      <SocialLinks />
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-black to-transparent" />
+    </div>
+  );
+}

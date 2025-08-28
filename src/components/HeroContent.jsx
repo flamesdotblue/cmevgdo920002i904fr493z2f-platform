@@ -30,16 +30,11 @@ export default function HeroContent() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
+        animate={{ opacity: 0.9 }}
         transition={{ delay: 0.6, duration: 1.2 }}
         className="mt-12 grid w-full max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4"
       >
-        {[
-          'Binary Exploitation',
-          'Web Security',
-          'Reverse Engineering',
-          'Malware Analysis',
-        ].map((tag) => (
+        {["Binary Exploitation", "Web Security", "Reverse Engineering", "Malware Analysis"].map((tag) => (
           <div key={tag} className="rounded border border-emerald-400/20 bg-black/40 px-3 py-2 text-center font-mono text-[11px] uppercase tracking-widest text-emerald-300/90">
             {tag}
           </div>
@@ -74,15 +69,11 @@ function Caret() {
   );
 }
 
-// Add keyframes via injected style tag once
 if (typeof document !== 'undefined' && !document.getElementById('hero-keyframes')) {
   const style = document.createElement('style');
   style.id = 'hero-keyframes';
   style.innerHTML = `
-    @keyframes caret {
-      0%, 45% { opacity: 1 }
-      46%, 100% { opacity: 0 }
-    }
+    @keyframes caret { 0%, 45% { opacity: 1 } 46%, 100% { opacity: 0 } }
     .animate-caret { animation: caret 1.2s steps(1, end) infinite }
   `;
   document.head.appendChild(style);
